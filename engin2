@@ -1,0 +1,23 @@
+from sys import argv
+from os.path import exists
+
+kopyala, kaynak, hedef = argv
+
+print "%s dosyasini %s dosyasina kopyalama" %(kaynak, hedef)
+
+if exists(hedef):
+    print "boyle bir dosya varoldugundan islem durduruldu"
+    exit
+else:
+    print "kopyalama islemi devam ediyor"
+
+kaynakfd = open(kaynak, 'r')
+icerik = kaynakfd.read()
+
+hedeffd = open(hedef, 'w')
+hedeffd.write(icerik)
+
+print "kopyalama islemi tamamlanmistir."
+
+kaynakfd.close()
+hedeffd.close()
